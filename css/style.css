@@ -1,0 +1,57 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+:root{
+    --main-color: #ffc0cb;
+}
+
+body{
+    font-family: Helvetica, sans-serif;
+    background-color: whitesmoke;
+}
+main{
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 3rem 0;
+}
+div{
+    margin: 3rem 0;
+    background-color: white;
+    border-radius: 1rem;
+}
+
+#navBar{
+    text-align: center;
+    background-color: var(--main-color);
+    width: 100%;
+    height: 2rem;
+}
+
+
+#formAddWaifu{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    width: 10rem;
+    padding: 1rem;
+    border: 0.1rem solid grey;
+}
+#formAddWaifu *{
+    margin-top: 0.1rem;
+}
+#waifuList{
+    padding: 1rem;
+    border: 0.1rem solid grey;
+}
+#waifuTable{
+    margin: auto;
+}
+table, th, tr, td{
+    border: 0.1rem solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
