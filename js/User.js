@@ -5,38 +5,37 @@ class User{
         this.userPassword = '';
         this.userWaifus = [];
     }
-    addWaifu(){
-        if(user.validateInputs()){
-            let waifu = new Waifu();
-            waifu.waifuName = document.getElementById('waifuName').value;
-            waifu.waifuRank = document.getElementById('waifuRank').value;
-            waifu.waifuReview = document.getElementById('waifuReview').value;
-            user.insertWaifu(waifu);
-            for(let i = 0; i < this.userWaifus.length; i++){
-                console.log(i + "-" + this.userWaifus[i].waifuName + "\n");
-            }
+    addWaifu(waifuName, waifuRank, waifuReview){
+        let waifu = new Waifu();
+        waifu.waifuName = waifuName;
+        waifu.waifuRank = waifuRank;
+        waifu.waifuReview = waifuReview;
+        user.insertWaifu(waifu);
+        for(let i = 0; i < this.userWaifus.length; i++){
+            console.log(i + "-" + this.userWaifus[i].waifuName + "\n");
         }
     
     }
     validateInputs(){
-        let checkName = document.getElementById('waifuName').value;
-        let checkRank = document.getElementById('waifuRank').value;
-        let checkReview = document.getElementById('waifuReview').value;
+        let waifuName = document.getElementById('waifuName').value;
+        let waifuRank = document.getElementById('waifuRank').value;
+        let waifuReview = document.getElementById('waifuReview').value;
         let msg = '';
-        if(checkName == ''){
+        if(waifuName == ''){
             msg += 'Enter your Waifu name!\n';    
         }
-        if(checkRank == ''){
+        if(waifuRank == ''){
             msg += 'Enter your Waifu rank!\n';
         }
-        if(checkReview == ''){
+        if(waifuReview == ''){
             msg += 'Enter your Waifu review!\n';
         }
         if(msg != ''){
             alert(msg);
-            return false;
         }
-        return true;
+        else{
+            this.addWaifu(waifuName, waifuRank, waifuReview);
+        }
     }
     
     insertWaifu(waifu){
