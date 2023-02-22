@@ -1,4 +1,5 @@
 class User{
+
     constructor(){
         this.userEmail = '';
         this.userName = '';
@@ -6,17 +7,19 @@ class User{
         this.userWaifus = [];
         this.lastWaifu = 1;
     }
+
     addWaifu(waifuName, waifuRank, waifuReview){
         let waifu = new Waifu();
         waifu.waifuId = this.lastWaifu;
         waifu.waifuName = waifuName;
         waifu.waifuRank = waifuRank;
         waifu.waifuReview = waifuReview;
-        user.insertWaifu(waifu);
-        user.listWaifu(waifu);
+        this.insertWaifu(waifu);
+        this.listWaifu(waifu);
         this.lastWaifu++;
-    
+        this.clearInputs();
     }
+
     listWaifu(waifu){
         let waifuList = document.getElementById('waifuTbody');
         let newRow = waifuList.insertRow(-1);
@@ -31,6 +34,7 @@ class User{
         let actionCell = newRow.insertCell(4);
         actionCell.innerHTML = "<button class='actionButton' id='editButton'></button><button class='actionButton' id='deleteButton'></button>";
     }
+
     validateInputs(){
         let waifuName = document.getElementById('waifuName').value;
         let waifuRank = document.getElementById('waifuRank').value;
@@ -55,5 +59,11 @@ class User{
     
     insertWaifu(waifu){
         this.userWaifus.push(waifu);
+    }
+
+    clearInputs(){
+        document.getElementById('waifuName').value = '';
+        document.getElementById('waifuRank').value = '';
+        document.getElementById('waifuReview').value = '';
     }
 }
