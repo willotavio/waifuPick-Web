@@ -13,11 +13,21 @@ class User{
         waifu.waifuRank = waifuRank;
         waifu.waifuReview = waifuReview;
         user.insertWaifu(waifu);
-        for(let i = 0; i < this.userWaifus.length; i++){
-            console.log(this.userWaifus[i].waifuId + "-" + this.userWaifus[i].waifuName + "\n");
-        }
+        user.listWaifu(waifu);
         this.lastWaifu++;
     
+    }
+    listWaifu(waifu){
+        let waifuList = document.getElementById('waifuTbody');
+        let newRow = waifuList.insertRow(-1);
+        let idCell = newRow.insertCell(0);
+        idCell.innerHTML = waifu.waifuId;
+        let nameCell = newRow.insertCell(1);
+        nameCell.innerHTML = waifu.waifuName;
+        let rankCell = newRow.insertCell(2);
+        rankCell.innerHTML = waifu.waifuRank;
+        let reviewCell = newRow.insertCell(3);
+        reviewCell.innerHTML = waifu.waifuReview;
     }
     validateInputs(){
         let waifuName = document.getElementById('waifuName').value;
