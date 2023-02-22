@@ -4,16 +4,19 @@ class User{
         this.userName = '';
         this.userPassword = '';
         this.userWaifus = [];
+        this.lastWaifu = 1;
     }
     addWaifu(waifuName, waifuRank, waifuReview){
         let waifu = new Waifu();
+        waifu.waifuId = this.lastWaifu;
         waifu.waifuName = waifuName;
         waifu.waifuRank = waifuRank;
         waifu.waifuReview = waifuReview;
         user.insertWaifu(waifu);
         for(let i = 0; i < this.userWaifus.length; i++){
-            console.log(i + "-" + this.userWaifus[i].waifuName + "\n");
+            console.log(this.userWaifus[i].waifuId + "-" + this.userWaifus[i].waifuName + "\n");
         }
+        this.lastWaifu++;
     
     }
     validateInputs(){
