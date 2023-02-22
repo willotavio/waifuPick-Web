@@ -18,10 +18,10 @@ main{
     transform: translateX(-50%);
     margin: 3rem 0;
 }
-div{
-    margin: 3rem 0;
-    background-color: white;
-    border-radius: 1rem;
+table, th, tr, td{
+    border: 0.1rem solid black;
+    border-collapse: collapse;
+    text-align: center;
 }
 
 #navBar{
@@ -31,7 +31,11 @@ div{
     height: 2rem;
 }
 
-
+.defaultBox{
+    background-color: white;
+    border-radius: 1rem;
+    margin: 3rem 0;
+}
 #formAddWaifu{
     margin: auto;
     display: flex;
@@ -49,9 +53,22 @@ div{
 }
 #waifuTable{
     margin: auto;
+    width: 25rem;
 }
-table, th, tr, td{
-    border: 0.1rem solid black;
-    border-collapse: collapse;
-    text-align: center;
+#waifuTable thead th{
+    padding: 0.1rem;
+}
+.actionButton{
+    width: 1.5rem;
+    height: 1.5rem;
+    border: none;
+}
+#editButton{
+    background: url("../imgs/svg/edit.svg") no-repeat;
+    background-size: 1.5rem;
+}
+
+#deleteButton{
+    background: url("../imgs/svg/delete.svg") no-repeat;
+    background-size: 1.5rem;
 }

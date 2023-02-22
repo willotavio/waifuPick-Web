@@ -28,6 +28,8 @@ class User{
         rankCell.innerHTML = waifu.waifuRank;
         let reviewCell = newRow.insertCell(3);
         reviewCell.innerHTML = waifu.waifuReview;
+        let actionCell = newRow.insertCell(4);
+        actionCell.innerHTML = "<button class='actionButton' id='editButton'></button><button class='actionButton' id='deleteButton'></button>";
     }
     validateInputs(){
         let waifuName = document.getElementById('waifuName').value;
