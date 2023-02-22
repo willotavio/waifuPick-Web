@@ -15,24 +15,28 @@ class User{
         waifu.waifuRank = waifuRank;
         waifu.waifuReview = waifuReview;
         this.insertWaifu(waifu);
-        this.listWaifu(waifu);
+        this.listWaifu();
         this.lastWaifu++;
         this.clearInputs();
     }
 
-    listWaifu(waifu){
+    listWaifu(){
         let waifuList = document.getElementById('waifuTbody');
-        let newRow = waifuList.insertRow(-1);
-        let idCell = newRow.insertCell(0);
-        idCell.innerHTML = waifu.waifuId;
-        let nameCell = newRow.insertCell(1);
-        nameCell.innerHTML = waifu.waifuName;
-        let rankCell = newRow.insertCell(2);
-        rankCell.innerHTML = waifu.waifuRank;
-        let reviewCell = newRow.insertCell(3);
-        reviewCell.innerHTML = waifu.waifuReview;
-        let actionCell = newRow.insertCell(4);
-        actionCell.innerHTML = "<button class='actionButton' id='editButton'></button><button class='actionButton' id='deleteButton'></button>";
+        waifuList.innerText = '';
+        for(let i = 0; i < this.userWaifus.length; i++){
+            let newRow = waifuList.insertRow(-1);
+            let idCell = newRow.insertCell(0);
+            let nameCell = newRow.insertCell(1);
+            let rankCell = newRow.insertCell(2);
+            let reviewCell = newRow.insertCell(3);
+            let actionCell = newRow.insertCell(4);
+            idCell.innerHTML = this.userWaifus[i].waifuId;
+            nameCell.innerHTML = this.userWaifus[i].waifuName;
+            rankCell.innerHTML = this.userWaifus[i].waifuRank;
+            reviewCell.innerHTML = this.userWaifus[i].waifuReview;
+            actionCell.innerHTML = "<button class='actionButton' id='editButton'></button>\
+            <button class='actionButton' id='deleteButton' onclick='user.deleteWaifu("+this.userWaifus[i].waifuId+")'></button>";
+        }
     }
 
     validateInputs(){
@@ -65,5 +69,17 @@ class User{
         document.getElementById('waifuName').value = '';
         document.getElementById('waifuRank').value = '';
         document.getElementById('waifuReview').value = '';
+    }
+
+    deleteWaifu(waifuId){
+        let waifuList = document.getElementById('waifuTbody')
+        for(let i = 0; i < this.userWaifus.length; i++){
+            if(this.userWaifus[i].waifuId == waifuId){
+                if(confirm("Are you sure to delete " + this.userWaifus[i].waifuName + "??")){
+                    this.userWaifus.splice(i, 1);
+                    waifuList.deleteRow(i);
+                }
+            }
+        }
     }
 }
