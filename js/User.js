@@ -84,4 +84,49 @@ class User{
             }
         }
     }
+
+    editWaifu(waifuId){
+        for(let i = 0; i < user.userWaifus.length; i++){
+            if(user.userWaifus[i].waifuId == waifuId){
+                let waifuIdInput = document.getElementById('waifuId');
+                let newWaifuNameInput = document.getElementById('newWaifuName');
+                let newWaifuRankInput = document.getElementById('newWaifuRank');
+                let newWaifuReviewInput = document.getElementById('newWaifuReview');
+                
+                waifuIdInput.value = waifuId;
+                newWaifuNameInput.value = user.userWaifus[i].waifuName;
+                newWaifuRankInput.value = user.userWaifus[i].waifuRank;
+                newWaifuReviewInput.value = user.userWaifus[i].waifuReview;
+
+                newWaifuNameInput.removeAttribute('disabled');
+                newWaifuRankInput.removeAttribute('disabled');
+                newWaifuReviewInput.removeAttribute('disabled');
+            }
+        }
+    }
+
+    updateWaifu(){
+        let newWaifuName;
+        let newWaifuRank;
+        let newWaifuReview;
+        let waifuId = document.getElementById('waifuId').value;
+        let newWaifuInfos = [
+            newWaifuName = document.getElementById('newWaifuName'),
+            newWaifuRank = document.getElementById('newWaifuRank'),
+            newWaifuReview = document.getElementById('newWaifuReview')
+        ]
+        if(user.validateInputs(newWaifuInfos[0].value, newWaifuInfos[1].value, newWaifuInfos[2].value)){
+            for(let i = 0; i < newWaifuInfos.length; i++){
+                newWaifuInfos[i].setAttribute('disabled', '');
+            }
+        }
+        for(let i = 0; i < user.userWaifus.length; i++){
+            if(user.userWaifus[i].waifuId == waifuId){
+                user.userWaifus[i].waifuName = newWaifuInfos[0].value;
+                user.userWaifus[i].waifuRank = newWaifuInfos[1].value;
+                user.userWaifus[i].waifuReview = newWaifuInfos[2].value;
+            }
+        }
+        user.listWaifu();
+    }
 }
