@@ -58,7 +58,7 @@ class User{
             nameCell.innerHTML = this.userWaifus[i].waifuName;
             rankCell.innerHTML = this.userWaifus[i].waifuRank;
             reviewCell.innerHTML = this.userWaifus[i].waifuReview;
-            actionCell.innerHTML = "<button class='actionButton' id='editButton')'></button>\
+            actionCell.innerHTML = "<button class='actionButton' id='editButton' onclick='user.editWaifu("+this.userWaifus[i].waifuId+")'></button>\
             <button class='actionButton' id='deleteButton' onclick='user.deleteWaifu("+this.userWaifus[i].waifuId+")'></button>";
         }
     }

@@ -36,7 +36,7 @@ table, th, tr, td{
     border-radius: 1rem;
     margin: 3rem 0;
 }
-#formAddWaifu{
+#formAddWaifu, #formUpdateWaifu{
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -44,7 +44,7 @@ table, th, tr, td{
     padding: 1rem;
     border: 0.1rem solid grey;
 }
-#formAddWaifu *{
+#formAddWaifu *, #formUpdateWaifu *{
     margin-top: 0.1rem;
 }
 #waifuList{
