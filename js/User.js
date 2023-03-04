@@ -12,37 +12,18 @@ class User{
         let waifuName = document.getElementById('waifuName').value;
         let waifuRank = document.getElementById('waifuRank').value;
         let waifuReview = document.getElementById('waifuReview').value;
-        if(this.validateInputs(waifuName, waifuRank, waifuReview)){
-            let waifu = new Waifu();
-            waifu.waifuId = this.lastWaifu;
-            waifu.waifuName = waifuName;
-            waifu.waifuRank = waifuRank;
-            waifu.waifuReview = waifuReview;
-            this.insertWaifu(waifu);
-            this.listWaifu();
-            this.lastWaifu++;
-            this.clearInputs();
-        }
+        let waifu = new Waifu();
+        waifu.waifuId = this.lastWaifu;
+        waifu.waifuName = waifuName;
+        waifu.waifuRank = waifuRank;
+        waifu.waifuReview = waifuReview;
+        this.insertWaifu(waifu);
+        this.listWaifu();
+        this.lastWaifu++;
+        this.clearInputs();
     }
 
-    validateInputs(waifuName, waifuRank, waifuReview){
-        let msg = '';
-        if(waifuName== ''){
-            msg += 'Enter your Waifu name!\n';    
-        }
-        if(waifuRank == ''){
-            msg += 'Enter your Waifu rank!\n';
-        }
-        if(waifuReview == ''){
-            msg += 'Enter your Waifu review!\n';
-        }
-        if(msg != ''){
-            alert(msg);
-        }
-        else{
-            return true;
-        }
-    }
+    
 
     listWaifu(){
         let waifuList = document.getElementById('waifuTbody');
@@ -71,7 +52,7 @@ class User{
         let addInputs = document.getElementById('formAddWaifu').querySelectorAll('input[type=text]');
         let updateInputs = document.getElementById('formUpdateWaifu').querySelectorAll('input[type=text]');
         for(let i = 0; i < addInputs.length; i++){
-            addInputs[i].value = '';
+            addInputs[i].value = null;
         }
         for(let i = 0; i < updateInputs.length; i++){
             updateInputs[i].value = '';
@@ -98,6 +79,7 @@ class User{
                 let newWaifuRankInput = document.getElementById('newWaifuRank');
                 let newWaifuReviewInput = document.getElementById('newWaifuReview');
                 
+                updateInput.removeAttribute('disabled');
                 waifuIdInput.value = waifuId;
                 newWaifuNameInput.value = this.userWaifus[i].waifuName;
                 newWaifuRankInput.value = this.userWaifus[i].waifuRank;
@@ -120,20 +102,18 @@ class User{
             newWaifuRank = document.getElementById('newWaifuRank'),
             newWaifuReview = document.getElementById('newWaifuReview')
         ]
-        if(this.validateInputs(newWaifuInfos[0].value, newWaifuInfos[1].value, newWaifuInfos[2].value)){
-            for(let i = 0; i < newWaifuInfos.length; i++){
-                newWaifuInfos[i].setAttribute('disabled', '');
-            }
-            for(let i = 0; i < this.userWaifus.length; i++){
-                if(this.userWaifus[i].waifuId == waifuId){
-                    this.userWaifus[i].waifuName = newWaifuInfos[0].value;
-                    this.userWaifus[i].waifuRank = newWaifuInfos[1].value;
-                    this.userWaifus[i].waifuReview = newWaifuInfos[2].value;
-                }
-            }
-            this.listWaifu();
-            this.clearInputs();
+        for(let i = 0; i < newWaifuInfos.length; i++){
+            newWaifuInfos[i].setAttribute('disabled', '');
         }
+        for(let i = 0; i < this.userWaifus.length; i++){
+            if(this.userWaifus[i].waifuId == waifuId){
+                this.userWaifus[i].waifuName = newWaifuInfos[0].value;
+                this.userWaifus[i].waifuRank = newWaifuInfos[1].value;
+                this.userWaifus[i].waifuReview = newWaifuInfos[2].value;
+            }
+        }
+        this.listWaifu();
+        this.clearInputs();
         
     }
 }
